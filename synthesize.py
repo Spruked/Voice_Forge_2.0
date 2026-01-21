@@ -60,9 +60,6 @@ class VoiceSynthesizer:
             
             # Verify version compatibility
             if embedding_data.get("forge_version", "1.0") != self.config.VERSION:
-                print(f"⚠️  Embedding version mismatch")
-                print(f"   Expected: {self.config.VERSION}")
-                print(f"   Found: {embedding_data.get('forge_version')}")
             
             return {
                 "gpt_cond_latent": embedding_data["gpt_cond_latent"].to(self.config.DEVICE),

@@ -58,9 +58,9 @@ python synthesize.py phil "Your custom text here"
 from synthesize import batch_synthesize
 
 lines = [
-	"First line of dialogue",
-	"Second line of dialogue",
-	"Third line with different emotion"
+    "First line of dialogue",
+    "Second line of dialogue",
+    "Third line with different emotion"
 ]
 
 paths = batch_synthesize("phil", lines)
