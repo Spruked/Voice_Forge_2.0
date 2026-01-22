@@ -26,15 +26,15 @@ class VoiceSynthesizer:
         
         try:
             from TTS.tts.configs.xtts_config import XttsConfig
+            from TTS.tts.models.xtts import Xtts
             xtts_config = XttsConfig()
-            xtts_config.load_json(
-                str(Path.home() / f".local/share/tts/tts_models--multilingual--multi-dataset--xtts_v2/config.json")
-            )
+            model_dir = Path.home() / "AppData" / "Local" / "tts" / "tts_models--multilingual--multi-dataset--xtts_v2"
+            xtts_config.load_json(str(model_dir / "config.json"))
             
             self.model = Xtts.init_from_config(xtts_config)
             self.model.load_checkpoint(
                 xtts_config,
-                checkpoint_dir=str(Path.home() / ".local/share/tts/tts_models--multilingual--multi-dataset--xtts_v2"),
+                checkpoint_dir=str(model_dir),
                 eval=True,
                 use_deepspeed=False
             )
@@ -60,6 +60,7 @@ class VoiceSynthesizer:
             
             # Verify version compatibility
             if embedding_data.get("forge_version", "1.0") != self.config.VERSION:
+                print(f"⚠️ Version mismatch: embedding {embedding_data.get('forge_version')} vs config {self.config.VERSION}")
             
             return {
                 "gpt_cond_latent": embedding_data["gpt_cond_latent"].to(self.config.DEVICE),

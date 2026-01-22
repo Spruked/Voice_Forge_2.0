@@ -57,6 +57,14 @@ class VoiceForgeConfig:
             "baseline_emotion": "earnest_intensity",
             "speaking_pace": "considered",
             "comedic_timing": "sudden_deadly_serious"
+        },
+        "cali": {
+            "name": "CALI",
+            "age_range": "eternal",
+            "vocal_traits": ["mezzo_soprano", "authoritative", "soothing"],
+            "baseline_emotion": "composed_confidence",
+            "speaking_pace": "measured_deliberate",
+            "comedic_timing": "orchestral_precision"
         }
     }
     
